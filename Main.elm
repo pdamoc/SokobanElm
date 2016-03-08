@@ -13,7 +13,7 @@ import Time
 -- http://www.boxworld.matsel.de/daten/deutsch/1.htm
 
 
-effectless : (a -> b -> c) -> a -> b -> ( c, Effects d )
+effectless : (action -> model -> model ) -> action -> model -> ( model, Effects a )
 effectless update action model = (update action model, Effects.none)
 
 app : StartApp.App Game.Model
