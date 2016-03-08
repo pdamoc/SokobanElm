@@ -28,13 +28,13 @@ app = StartApp.start
       |> Signal.merge Keyboard.space
       |> Time.timestamp
       |> Signal.map (fst >> Game.ActEnter) 
-      , Keyboard.isDown 77
-       |> Signal.map (\b -> if b then Game.ActNop else Game.ActMenu)
-      , Keyboard.isDown 82
-       |> Time.timestamp 
-       |> Signal.map (\(t, b) -> if b then Game.ActNop else Game.ActRestartLevel t)
-      , Time.every 10
-       |> Signal.map Game.ActTick
+    , Keyboard.isDown 77
+     |> Signal.map (\b -> if b then Game.ActNop else Game.ActMenu)
+    , Keyboard.isDown 82
+     |> Time.timestamp 
+     |> Signal.map (\(t, b) -> if b then Game.ActNop else Game.ActRestartLevel t)
+    , Time.every 10
+     |> Signal.map Game.ActTick
     ]
   }
 
